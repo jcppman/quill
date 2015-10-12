@@ -50,19 +50,16 @@ html
           button.ql-format-button.ql-bullet(title='Bullet') Bullet
           button.ql-format-button.ql-list(title='List') List
         #editor-container
+          p Test
 
     script(type='text/javascript', src='../quill.js')
     script(type='text/javascript').
-      var editor = new Quill('#editor-container', {
-        modules: {
-          'toolbar': { container: '#formatting-container' },
-          'link-tooltip': true,
-          'image-tooltip': true
-        }
+      var quill = new Quill('#editor-container', {
+        modules: { toolbar: '#formatting-container' }
       });
-      editor.on('selection-change', function(range) {
+      quill.on('selection-change', function(range) {
         console.log('selection-change', range)
       });
-      editor.on('text-change', function(delta, source) {
+      quill.on('text-change', function(delta, source) {
         console.log('text-change', delta, source)
       });
